@@ -6,34 +6,33 @@ namespace AHKCore
 {
 	public class Functions
 	{
-		public static BaseAHKNode Test()
+		public static object Test()
 		{
 			Console.WriteLine("FUNCTIONS LOADED");
 			return null;
 		}
 
-		public static BaseAHKNode Test2(BaseAHKNode text)
+		public static object Test2(object text)
 		{
 			return text;
 		}
 
-		public static BaseAHKNode Test3(BaseAHKNode text)
+		public static object Test3(object text)
 		{
-			return new VariableValue() {Value = new SomeClass(text.extraInfo.ToString())};
+			return new SomeClass(text.ToString());
 		}
 
 		public class Inner
 		{
-			public static BaseAHKNode Test()
+			public static object Test()
 			{
 				Console.WriteLine("INNER CLASS");
 				return null;
 			}
 
-			public static BaseAHKNode Test2(BaseAHKNode num1, BaseAHKNode num2)
+			public static object Test2(object num1, object num2)
 			{
-				return new VariableValue(){Value =  
-				(int)((VariableValue)num1).Value + (int)((VariableValue)num2).Value};
+				return (dynamic)num1 + num2;
 			}
 		}
 	}
@@ -46,9 +45,9 @@ namespace AHKCore
 			this.text = text;
 		}
 
-		public BaseAHKNode GetText()
+		public object GetText()
 		{
-			return new VariableValue() {Value = this.text};
+			return this.text;
 		}
 	}
 }
