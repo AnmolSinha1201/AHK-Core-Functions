@@ -22,6 +22,12 @@ namespace AHKCore
 			return new SomeClass(text.ToString());
 		}
 
+		public static object Test4(ref object var) //variable by ref test
+		{
+			var = "123";
+			return null;
+		}
+
 		public class Inner
 		{
 			public static object Test()
